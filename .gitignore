@@ -1,0 +1,28 @@
+# Virtual environments - never share; recreate from requirements.txt
+.venv/
+venv/
+env/
+
+# Python build/cache
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+
+# Secrets and local config - only .env.example is shared
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials
+.aws/
+
+# Logs and packaged archives
+*.log
+*.zip
+
+# Editors
+.vscode/
+.idea/

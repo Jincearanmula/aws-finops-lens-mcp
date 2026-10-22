@@ -1,0 +1,6 @@
+# Direct dependencies (version ranges). Edit this file, then regenerate requirements.txt:
+#   pip-compile --generate-hashes --strip-extras requirements.in -o requirements.txt
+mcp[cli]>=2.3,<3
+boto3>=1.43,<2
+python-dotenv>=1.2,<2
+uvicorn>=0.54,<1

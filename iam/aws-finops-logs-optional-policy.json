@@ -1,0 +1,34 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ListLogGroups",
+      "Effect": "Allow",
+      "Action": ["logs:DescribeLogGroups"],
+      "Resource": "arn:aws:logs:us-east-1:ACCOUNT_ID:log-group:*"
+    },
+    {
+      "Sid": "ReadApprovedLogGroupsOnly",
+      "Effect": "Allow",
+      "Action": ["logs:FilterLogEvents"],
+      "Resource": [
+        "arn:aws:logs:us-east-1:ACCOUNT_ID:log-group:APPROVED_LOG_GROUP_NAME:*"
+      ]
+    },
+    {
+      "Sid": "CloudTrailManagementEventHistory",
+      "Effect": "Allow",
+      "Action": ["cloudtrail:LookupEvents"],
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": { "aws:RequestedRegion": ["us-east-1"] }
+      }
+    },
+    {
+      "Sid": "NeverUnmaskProtectedLogData",
+      "Effect": "Deny",
+      "Action": ["logs:Unmask"],
+      "Resource": "*"
+    }
+  ]
+}

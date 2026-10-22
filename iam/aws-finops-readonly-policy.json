@@ -1,0 +1,39 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "CostExplorerRead",
+      "Effect": "Allow",
+      "Action": ["ce:GetCostAndUsage"],
+      "Resource": "*"
+    },
+    {
+      "Sid": "OptimizationRecommendationsRead",
+      "Effect": "Allow",
+      "Action": [
+        "compute-optimizer:GetEC2InstanceRecommendations",
+        "cost-optimization-hub:ListRecommendations",
+        "cost-optimization-hub:GetRecommendation"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "InventoryAndMetricsReadApprovedRegions",
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DescribeInstances",
+        "rds:DescribeDBInstances",
+        "ecs:ListClusters",
+        "ecs:DescribeClusters",
+        "ecs:ListServices",
+        "ecs:DescribeServices",
+        "cloudwatch:GetMetricData",
+        "cloudwatch:GetMetricStatistics"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": { "aws:RequestedRegion": ["us-east-1"] }
+      }
+    }
+  ]
+}
